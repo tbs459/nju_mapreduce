@@ -1,0 +1,1 @@
+mvn archetype:generate -DgroupId=nju_mapreduce -DartifactId=proj3 -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false 
