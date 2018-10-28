@@ -6,6 +6,7 @@
 *.o*
 .DS_Store
 .ftpconfig
+updatebackup.sh
 test.sh
 .vscode
 *.json
