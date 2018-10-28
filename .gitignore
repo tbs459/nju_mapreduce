@@ -1,0 +1,12 @@
+*.log
+*.model
+*.pyc
+*.swp
+*.e*
+*.o*
+.DS_Store
+.ftpconfig
+test.sh
+.vscode
+*.json
+.jar
