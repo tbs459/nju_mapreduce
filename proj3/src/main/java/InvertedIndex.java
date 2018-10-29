@@ -19,8 +19,8 @@ public class InvertedIndex {
             Configuration conf = new Configuration();
             job = new Job(conf, "invert index"); 
             job.setJarByClass(InvertedIndex.class); 
-            job.setInputFormatClass(TextInputFormat.class); 
             job.setMapperClass(InvertedIndexMapper.class); 
+            job.setCombinerClass(InvertedIndexCombiner.class);
             job.setReducerClass(InvertedIndexReducer.class); 
             job.setOutputKeyClass(Text.class); 
             job.setOutputValueClass(Text.class); 
