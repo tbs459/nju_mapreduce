@@ -1,4 +1,9 @@
-public static class InvertedIndexCombiner extends Reducer<Text, Text, Text, Text>{
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Iterator;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+public class InvertedIndexCombiner extends Reducer<Text, Text, Text, Text>{
         private Text info = new Text();
         @Override
         protected void reduce(Text key, Iterable<Text> values, Reducer<Text, Text, Text, Text>.Context context)

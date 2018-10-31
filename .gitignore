@@ -11,7 +11,7 @@ test.sh
 .vscode
 .idea
 *.json
-.jar
+*.jar
 complie.sh
 *.class
 .settings
