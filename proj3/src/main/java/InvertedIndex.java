@@ -20,7 +20,7 @@ public class InvertedIndex {
             Job job = new Job(conf, "invert index");
             job.setJarByClass(InvertedIndex.class);
             job.setMapperClass(InvertedIndexMapper.class);
-            // job.setCombinerClass(InvertedIndexCombiner.class);
+            job.setCombinerClass(InvertedIndexCombiner.class);
             job.setReducerClass(InvertedIndexReducer.class); 
             job.setOutputKeyClass(Text.class); 
             job.setOutputValueClass(Text.class); 
