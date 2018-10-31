@@ -9,6 +9,7 @@
 updatebackup.sh
 test.sh
 .vscode
+.idea
 *.json
 .jar
 complie.sh
