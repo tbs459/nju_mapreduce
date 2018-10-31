@@ -1,9 +1,8 @@
+import java.io.IOException;
+import java.util.Collections;
+import java.util.Iterator;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
-
-import java.io.IOException;
-
-
 public class InvertedIndexCombiner extends Reducer<Text, Text, Text, Text>{
         private Text info = new Text();
         @Override
