@@ -16,6 +16,7 @@ public class InvertedIndexCombiner extends Reducer<Text, Text, Text, Text>{
                 Integer docNameCnt = doc_map.get(docName);
                 if( docNameCnt == null ){
                     docNameCnt = Integer.parseInt(valuePair[1]);
+                    docNameCnt -= 1;
                 }
 
                 doc_map.put(docName, docNameCnt + 1);
