@@ -18,6 +18,7 @@ public class InvertedIndex {
         try {
             Configuration conf = new Configuration();
             Job job = new Job(conf, "invert index");
+            job.setNumReduceTasks(5);
             job.setJarByClass(InvertedIndex.class);
             job.setMapperClass(InvertedIndexMapper.class);
             job.setCombinerClass(InvertedIndexCombiner.class);
