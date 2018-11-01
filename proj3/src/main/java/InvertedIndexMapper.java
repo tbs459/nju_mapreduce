@@ -1,5 +1,5 @@
 import java.io.IOException;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.IntWritable;
@@ -12,6 +12,10 @@ public class InvertedIndexMapper extends Mapper<LongWritable, Text, Text, Text> 
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
         FileSplit fileSplit = (FileSplit)context.getInputSplit();
         String docName = fileSplit.getPath().getName();
+
+        Integer docNameLen = docName.length();
+        docName = docName.substring(0,docNameLen - 14);
+        
         Text newKey = new Text();
         Text newVal = new Text();
         StringTokenizer itr = new StringTokenizer(value.toString());
