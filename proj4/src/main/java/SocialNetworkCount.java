@@ -17,12 +17,11 @@ public class SocialNetworkCount {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
-            Job job = new Job(conf, "invert index");
+            Job job = new Job(conf, "SocialNetworkCount");
             job.setNumReduceTasks(5);
-            job.setJarByClass(InvertedIndex.class);
-            job.setMapperClass(InvertedIndexMapper.class);
-            job.setCombinerClass(InvertedIndexCombiner.class);
-            job.setReducerClass(InvertedIndexReducer.class); 
+            job.setJarByClass(SocialNetworkCount.class);
+            job.setMapperClass(PreCodeMapper.class);
+            job.setReducerClass(PreCodeReducer.class); 
             job.setOutputKeyClass(Text.class); 
             job.setOutputValueClass(Text.class); 
             FileInputFormat.addInputPath(job, new Path(args[0])); 
