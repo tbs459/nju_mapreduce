@@ -17,16 +17,33 @@ public class SocialNetworkCount {
     public static void main(String[] args) {
         try {
             Configuration conf = new Configuration();
-            Job job = new Job(conf, "SocialNetworkCount");
-            job.setNumReduceTasks(5);
-            job.setJarByClass(SocialNetworkCount.class);
-            job.setMapperClass(PreCodeMapper.class);
-            job.setReducerClass(PreCodeReducer.class); 
-            job.setOutputKeyClass(Text.class); 
-            job.setOutputValueClass(Text.class); 
-            FileInputFormat.addInputPath(job, new Path(args[0])); 
-            FileOutputFormat.setOutputPath(job, new Path(args[1])); 
-            System.exit(job.waitForCompletion(true) ? 0 : 1);
+
+            Job job1 = new Job(conf, "SocialNetworkCountFirst");
+            job1.setNumReduceTasks(5);
+            job1.setJarByClass(SocialNetworkCount.class);
+            job1.setMapperClass(PreCodeMapper.class);
+            job1.setReducerClass(PreCodeReducer.class);
+            job1.setOutputKeyClass(Text.class);
+            job1.setOutputValueClass(Text.class);
+            FileInputFormat.addInputPath(job1, new Path(args[0]));
+            FileOutputFormat.setOutputPath(job1, new Path("/data/out/step1"));
+
+            job1.waitForCompletion(true);
+
+            Job job2 = new Job(conf, "SocialNetworkCountSecond");
+            job2.setNumReduceTasks(5);
+            job2.setJarByClass(SocialNetworkCount.class);
+            job2.setMapperClass(MidCodeMapper.class);
+            job2.setReducerClass(MidCodeReducer.class);
+            job2.setOutputKeyClass(Text.class);
+            job2.setOutputValueClass(Text.class);
+
+            FileInputFormat.addInputPath(job2, new Path("/data/out/step1"));
+            FileOutputFormat.setOutputPath(job2, new Path(args[1]));
+
+            job2.waitForCompletion(job1.isComplete());
+
+
         } catch (Exception e) { 
             e.printStackTrace(); 
         }
