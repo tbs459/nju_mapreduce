@@ -11,21 +11,23 @@ public class MidCodeReducer extends Reducer<Text, Text, Text, Text> {
         Text newKey = new Text();
         Text newVal = new Text();
         newVal.set("+");
-        values.forEach((value) -> {
-           listOfConnections.add(value.toString());
-           newKey.set(key.toString()+"+"+value.toString());
-            try {
-                context.write(newKey, newVal);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-//        for (Text value : values) {
-//            listOfConnections.add(value.toString());
-//            listOfConnections.set(key.toString()+"+"+value.toString());
-//        }
+//        values.forEach((value) -> {
+//           listOfConnections.add(value.toString());
+//           newKey.set(key.toString()+"+"+value.toString());
+//            try {
+//                context.write(newKey, newVal);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        });
+        for (Text value : values) {
+
+            listOfConnections.add(value.toString());
+            newKey.set(key.toString()+"+"+value.toString());
+            context.write(newKey, newVal);
+        }
         for(int i=0; i<listOfConnections.size(); i++) {
             for (int j = i + 1; j < listOfConnections.size(); j++) {
                 String initial = listOfConnections.get(i).trim();
