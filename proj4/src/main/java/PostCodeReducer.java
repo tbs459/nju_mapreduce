@@ -16,7 +16,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.conf.Configuration;
-public static class PostCodeReducer extends Reducer<Text, Text, Text, Text>
+public class PostCodeReducer extends Reducer<Text, Text, Text, Text>
 {
     private static int result = 0;
     public void cleanup(Context context) throws IOException, InterruptedException

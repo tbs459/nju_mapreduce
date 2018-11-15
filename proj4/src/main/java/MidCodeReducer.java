@@ -22,6 +22,10 @@ public class MidCodeReducer extends Reducer<Text, Text, Text, Text> {
                 e.printStackTrace();
             }
         });
+//        for (Text value : values) {
+//            listOfConnections.add(value.toString());
+//            listOfConnections.set(key.toString()+"+"+value.toString());
+//        }
         for(int i=0; i<listOfConnections.size(); i++) {
             for (int j = i + 1; j < listOfConnections.size(); j++) {
                 String initial = listOfConnections.get(i).trim();

@@ -18,7 +18,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.conf.Configuration;
-public static class PostCodeMapper extends Mapper<LongWritable, Text, Text, Text>
+public class PostCodeMapper extends Mapper<LongWritable, Text, Text, Text>
 {
     private Text newKey = new Text();
     private Text newValue = new Text();
