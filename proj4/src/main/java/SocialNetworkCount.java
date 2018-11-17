@@ -44,7 +44,6 @@ public class SocialNetworkCount {
             job2.waitForCompletion(job1.isComplete());
             
             Job job3 = new Job(conf, "SocialNetworkCountThird");
-            job3.setNumReduceTasks(5);
             job3.setJarByClass(SocialNetworkCount.class);
             job3.setMapperClass(PostCodeMapper.class);
             job3.setReducerClass(PostCodeReducer.class);
@@ -52,6 +51,8 @@ public class SocialNetworkCount {
             job3.setOutputValueClass(Text.class);
             FileInputFormat.addInputPath(job3, new Path("step2"));
             FileOutputFormat.setOutputPath(job3, new Path(args[1]));
+
+            job3.waitForCompletion(job2.isComplete());
         } catch (Exception e) { 
             e.printStackTrace(); 
         }
